@@ -27,6 +27,17 @@
   font-weight: bold;
 }
 
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap; /* Add this so 4 cards wrap properly */
+  gap: 20px;
+}
+
+.stat-card {
+  min-width: 200px; /* Reduce from 380px so all 4 fit */
+  flex: 1;
+}
+
 .icon-box.maroon {
   background-color: #fcecef;
   color: #A8103E;

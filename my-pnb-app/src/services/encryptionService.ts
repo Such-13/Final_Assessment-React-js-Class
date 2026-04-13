@@ -1,39 +1,39 @@
+/// <reference types="vite/client" />
 import CryptoJS from 'crypto-js';
-
-/**
- * SOLID: Single Responsibility Principle
- * This service has one job: handling the security of your data payloads.
- */
 
 const ENC_KEY = import.meta.env.VITE_ENC_KEY;
 
 export const encryptionService = {
-  /**
-   * Encrypts the JSON payload before sending it to the API
-   */
-  encrypt: (data: any): string => {
+  // Encrypts the payload and wraps it in RequestData
+  wrapAndEncrypt: (data: any): { RequestData: string } => {
     try {
       const jsonString = JSON.stringify(data);
-      // Using AES encryption as per standard banking protocol requirements
-      const encrypted = CryptoJS.AES.encrypt(jsonString, ENC_KEY).toString();
-      return encrypted;
+      // We use Utf8 parsing to ensure the key is handled correctly by CryptoJS
+      const key = CryptoJS.enc.Utf8.parse(ENC_KEY);
+      const encrypted = CryptoJS.AES.encrypt(jsonString, key, {
+        mode: CryptoJS.mode.ECB, // Common in banking, or use CBC if your backend requires IV
+        padding: CryptoJS.pad.Pkcs7
+      }).toString();
+      
+      return { RequestData: encrypted };
     } catch (error) {
       console.error('Encryption failed:', error);
-      return '';
+      return { RequestData: '' };
     }
   },
 
-  /**
-   * Decrypts the response received from the API
-   */
-  decrypt: (cipherText: string): any => {
+  // Decrypts the response from the server
+  decryptResponse: (encryptedData: string): any => {
     try {
-      const bytes = CryptoJS.AES.decrypt(cipherText, ENC_KEY);
-      const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      return decryptedData;
+      const key = CryptoJS.enc.Utf8.parse(ENC_KEY);
+      const decrypted = CryptoJS.AES.decrypt(encryptedData, key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      });
+      return JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
     } catch (error) {
-      console.error('Decryption failed:', error);
-      return null;
+      // If data is not encrypted (some error messages come in plain text), return as is
+      return encryptedData;
     }
   }
 };

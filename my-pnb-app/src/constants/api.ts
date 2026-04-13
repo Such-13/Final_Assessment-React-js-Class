@@ -3,7 +3,7 @@
  * Base URLs are separated to allow switching between Auth and No-Auth environments 
  * easily without touching the component logic.
  */
-
+/// <reference types="vite/client" />
 export const BASE_URLS = {
   STAGE_AUTH: import.meta.env.VITE_BASE_URL_AUTH || 'https://auth-dev-stage.iserveu.online',
   STAGE_NO_AUTH: import.meta.env.VITE_BASE_URL_NO_AUTH || 'https://api-dev-stage.iserveu.online',
