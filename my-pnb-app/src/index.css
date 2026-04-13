@@ -1,0 +1,95 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+:root {
+  /* PNB Brand Colors */
+  --pnb-maroon: #A8103E;
+  --pnb-maroon-dark: #8B0C33;
+  --pnb-maroon-light: #C41247;
+  --pnb-gold: #F5A623;
+  --pnb-gold-light: #FDB944;
+ 
+  /* UI Colors */
+  --bg-primary: #F7F7F8;
+  --bg-white: #FFFFFF;
+  --bg-sidebar: #FFFFFF;
+ 
+  --text-primary: #1A1A2E;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --text-white: #FFFFFF;
+ 
+  --border-color: #E5E7EB;
+  --border-light: #F3F4F6;
+ 
+  --success: #16A34A;
+  --success-bg: #DCFCE7;
+  --error: #DC2626;
+  --error-bg: #FEE2E2;
+  --warning: #D97706;
+ 
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+ 
+  /* Sidebar */
+  --sidebar-width: 210px;
+  --sidebar-collapsed: 0px;
+  --header-height: 60px;
+ 
+  /* Typography */
+  --font-main: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+ 
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+ 
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+ 
+html, body, #root {
+  height: 100%;
+  font-family: var(--font-main);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-main); cursor: pointer; border: none; outline: none; }
+input, select { font-family: var(--font-main); }
+ 
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+ 
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--pnb-maroon);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+ 
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+ 

@@ -1,0 +1,44 @@
+.dashboard-page { padding: 5px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.page-header h2 { font-size: 18px; font-weight: 700; color: #333; }
+
+.vpa-info { margin-bottom: 25px; font-size: 14px; color: #444; }
+
+.stats-grid { display: flex; gap: 20px; }
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 380px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #f0f0f0;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.icon-box.maroon {
+  background-color: #fcecef;
+  color: #A8103E;
+}
+
+.stat-details p { margin: 0; font-size: 13px; color: #777; margin-bottom: 4px; }
+.stat-details h3 { margin: 0; font-size: 20px; font-weight: 700; color: #333; }
+
+.filter-dropdown select {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  background: white;
+}
